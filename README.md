@@ -43,6 +43,8 @@ Voltage Standing Wave Ratio reached **$1.03$** at resonance (ideal is $1.00$).
 
 ## 📁 Repository Files
 
+- `coaxial_patch_antenna.cst` : CST Studio Suite 3D simulation model file
+
 - `geometry.png` : 3D perspective of the patch antenna
 - `feed_detail.png` : Detailed view of coaxial feed pin and ground plane clearance
 - `s11_final_2.56ghz.png` : High-precision converged S11 curve (Mesh passes 1 to 3)
