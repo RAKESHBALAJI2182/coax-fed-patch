@@ -1,17 +1,55 @@
-# Coaxial-fed microstrip patch antenna
+# Coaxial-Fed Microstrip Patch Antenna
 
-Microstrip patch antenna with a coaxial probe feed, designed in CST Studio Suite and targeted at the 2.4 GHz band. Feed-pin position and patch dimensions were tuned across several iterations to improve the impedance match.
+Design and iterative feed optimization of a coaxially probe-fed microstrip patch antenna in **CST Studio Suite**, targeting the **2.4 GHz band**.
 
-## Results
+---
 
-Final design resonates at 2.56 GHz with S11 ≈ -38 dB and VSWR ≈ 1.03, checked across three mesh passes. An earlier iteration resonated at 2.7 GHz with a weaker match (S11 ≈ -10.5 dB); the feed position was adjusted to reach the final result.
+## 🎯 Design & Tuning Methodology
 
-## Files
+The coaxial probe feed location critically controls the antenna's input impedance $Z_{\text{in}}$ and resonance:
+1. **Iteration 1 (Initial probe position):** Resonated at $2.70\text{ GHz}$ with a sub-optimal impedance match ($S_{11} \approx -10.5\text{ dB}$, $\text{VSWR} \approx 1.85$).
+2. **Final Iteration (Optimized probe placement & patch tuning):** Iteratively shifted feed pin position and refined patch dimensions to achieve near-perfect $50\,\Omega$ matching.
 
-- s11.s1p - exported S-parameter data (Touchstone format)
-- s11_plot.png - S11 magnitude vs frequency
-- vswr_plot.png - VSWR vs frequency
-- geometry.png - model view from CST
-- feed_detail.png - close-up of the coaxial pin and ground clearance
+### CST Model & Feed Construction
+| Patch Structure | Coaxial Probe & Clearance Detail |
+| :---: | :---: |
+| ![Geometry](geometry.png) | ![Feed Detail](feed_detail.png) |
 
-Tool: CST Studio Suite.
+---
+
+## 📊 Performance Comparison & Results
+
+### Iteration 1 vs. Final Iterated Design
+
+| Metric | Iteration 1 (Initial) | Final Design (Optimized) |
+| :--- | :---: | :---: |
+| **Resonant Frequency** | $2.70\text{ GHz}$ | $\mathbf{2.56\text{ GHz}}$ |
+| **Return Loss ($S_{11}$)** | $-10.5\text{ dB}$ | $\mathbf{-38.0\text{ dB}}$ |
+| **VSWR** | $\approx 1.85$ | $\mathbf{1.03}$ (Near Ideal) |
+| **Mesh Validation** | 2 Passes | **3 Refinement Passes (Converged)** |
+
+### 1. Final $S_{11}$ Return Loss
+Achieved an exceptional deep resonance null of **$-38\text{ dB}$** at $2.56\text{ GHz}$, validating strong impedance matching.
+![Final S11 Plot](s11_final_2.56ghz.png)
+
+### 2. Final VSWR
+Voltage Standing Wave Ratio reached **$1.03$** at resonance (ideal is $1.00$).
+![Final VSWR Plot](vswr_final_2.56ghz.png)
+
+### 3. Early Iteration ($2.7\text{ GHz}$) Baseline
+![Iteration 1 S11](s11_iteration1_2.7ghz.png)
+
+---
+
+## 📁 Repository Files
+
+- `geometry.png` : 3D perspective of the patch antenna
+- `feed_detail.png` : Detailed view of coaxial feed pin and ground plane clearance
+- `s11_final_2.56ghz.png` : High-precision converged S11 curve (Mesh passes 1 to 3)
+- `vswr_final_2.56ghz.png` : Final VSWR curve showing 1.03 match
+- `s11_iteration1_2.7ghz.png` : Baseline tuning stage plot
+- `README.md` : Complete engineering report and tuning documentation
+
+---
+**Tool:** CST Studio Suite  
+**Author:** Bollam Rakesh Balaji (NIT Mizoram)
